@@ -6,8 +6,9 @@ require("dotenv").config();
 const { createServer } = require('node:http');
 const fs = require('fs')
 
-// const hostname = 'https://git.heroku.com/admin3amasc.git';
-const port = process.env.PORT || 3000;
+// const hostname = '127.0.0.1';
+const hostname = process.env.HEROKU_HOSTNAME || '127.0.0.1';
+const port = process.env.PORT || 3300;
 
 const server = createServer((req, res) => {
   res.statusCode = 200;

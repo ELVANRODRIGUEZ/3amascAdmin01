@@ -12,5 +12,8 @@
     "url": "3amascAdmin01"
   },
   "author": "ELVANRODRIGUEZ",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
 }

@@ -3,24 +3,26 @@
 // the .env file afterwards.
 require("dotenv").config();
 
-const {Pool} = require('pg');
+const { Pool } = require('pg');
 
-const pool = new Pool ({
-  connectionString: process.env.DATABASE_URL,
+// Configure the database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL, // Heroku provides this automatically
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false // Necessary for connecting to Heroku PostgreSQL
   }
 });
 
+// Test the connection
 pool.query('SELECT * FROM obras', (err, result) => {
-
   if (err) {
-    console.log('Error fetching data', err);
+    console.error('Error fetching data:', err);
   } else {
-    console.log(result.rows);
+    console.log('Data fetched successfully:', result.rows);
   }
-  pool.end();
-})
+  pool.end(); // Close the connection pool
+});
+
 
 const { createServer } = require('node:http');
 const fs = require('fs')

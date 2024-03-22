@@ -48,6 +48,10 @@ app.get('/api/obras', async (req, res) => {
   }
 })
 
+// app.use(express.static('public'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+}
 
 const { createServer } = require('node:http');
 const fs = require('fs')

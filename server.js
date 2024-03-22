@@ -3,6 +3,25 @@
 // the .env file afterwards.
 require("dotenv").config();
 
+const {Pool} = require('pg');
+
+const pool = new Pool ({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+pool.query('SELECT * FROM obras', (err, result) => {
+
+  if (err) {
+    console.log('Error fetching data', err);
+  } else {
+    console.log(resltut.rows);
+  }
+  pool.end();
+})
+
 const { createServer } = require('node:http');
 const fs = require('fs')
 
@@ -24,6 +43,10 @@ const server = createServer((req, res) => {
   })
 });
 
+// Heroku dynamically assigns a port to your application and sets the PORT environment variable. 
+// We then must use "process.env.PORT" directly to listen on the correct port provided by Heroku. 
+// By removing hostname from the server.listen method, our server will listen on all available network interfaces, 
+// which is what Heroku expects.
 server.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });

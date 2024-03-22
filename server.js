@@ -3,6 +3,15 @@
 // the .env file afterwards.
 require("dotenv").config();
 
+// This loads Express, which is a web app framework for Node.js for:
+// 1) Request handling.
+// 2) Response management.
+// 3) Request parsing.
+// 4) Incoming requests routing.
+// 5) RESTful API Development in general.
+
+const express = require("express");
+const app = express();
 const { Pool } = require('pg');
 
 // Configure the database connection
@@ -22,6 +31,22 @@ pool.query('SELECT * FROM obras', (err, result) => {
   }
   pool.end(); // Close the connection pool
 });
+
+// Create an API Endpoint on the server side so we can find the fetched data
+// by making a HTTP Get Request from the client side.
+app.get('/api/obras', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT obra FROM obras');
+    const obras = result.rows;
+    client.release();
+    res.json(obras);
+    console.log(obras);
+  } catch (err) {
+    console.error('Error fetching obras: ', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+})
 
 
 const { createServer } = require('node:http');

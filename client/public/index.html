@@ -98,18 +98,16 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th class="id" scope="col">OBRA</th>
-                  
-                  <th id="contratista" scope="col">
+                  <th class="id" scope="col">
+                    <p id="obraHeader" class="headerSelector">OBRA</p>
+                    <select id="obraSelector" class="form-control">
+                      
+                    </select>
+                  </th>
+                  <th id="material" scope="col">
                     <p id="contratistaHeader" class="headerSelector">MATERIAL</p>
                     <select id="constratistaSelector" class="form-control">
-                      <!-- <option selected disabled></option>
-                      <option title="TODOS LOS CONTRATISTAS">TODOS</option>
-                      <option title="FERNADO REYES">FERNADO REYES</option>
-                      <option title="JOSÉ SANDOVAL">JOSÉ SANDOVAL</option>
-                      <option title="MANUEL NAVARRO">MANUEL NAVARRO</option>
-                      <option title="MARCIANO HERNÁNDEZ">MARCIANO HERNÁNDEZ</option>
-                      <option title="RODRIGO ARGÜELLO">RODRIGO ARGÜELLO</option> -->
+                      
                     </select>
                   </th>
                   <th scope="col">
@@ -310,7 +308,10 @@
   </div>
 
   <!-- Script -->
-  <script src="assets/javascript/index.js"></script>
+  <script src="index.js"></script>
+    <script>
+      console.log("Hi!")
+    </script>
 
 </body>
 

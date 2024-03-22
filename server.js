@@ -17,7 +17,7 @@ pool.query('SELECT * FROM obras', (err, result) => {
   if (err) {
     console.log('Error fetching data', err);
   } else {
-    console.log(resltut.rows);
+    console.log(result.rows);
   }
   pool.end();
 })

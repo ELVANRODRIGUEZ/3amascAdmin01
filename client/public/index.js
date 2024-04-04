@@ -28,7 +28,7 @@ fetch('/api/obras')
 $('#obraSelector').change(event => {
     const selectedId = event.target.value; // Get the selected obra ID from the event
     const idToSearch = 5; // Your updated name (you can get this dynamically if needed)
-    const obraToChange = 'OBRA NUEVA_01'; // Your updated description (you can get this dynamically if needed)
+    const obraToChange = 'OBRA NUEVA_02'; // Your updated description (you can get this dynamically if needed)
 
     // Prepare the PUT request data
     const putData = {

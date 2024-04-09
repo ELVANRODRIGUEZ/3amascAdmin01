@@ -92,8 +92,10 @@ app.use('/api/materiales',materialesRouter);
 // '__dirname', and the route 'client/public' afterwards, adding
 // '/' automatically.
 app.use(express.static('http://localhost:3000'));
-// app.use(express.static(path.join(__dirname, 'src')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./build'));
+app.use(express.static('./public'));
+app.use(express.static('./build/static'));
+app.use(express.static('./public/components'));
 
 
 // **************************************** DEFINING A ROUTE FOR THE LANDING PAGE ("index.html").
@@ -109,9 +111,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // to serve static files from that directory on a previous code line.
 // 'path.join' concatenates the parameters passed adding '/' automatically for
 // each one of them
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   // res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile('./build/index.html');
 });
 
 // **************************************** PORT LISTENING.

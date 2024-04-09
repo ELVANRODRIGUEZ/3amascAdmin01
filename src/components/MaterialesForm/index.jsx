@@ -11,7 +11,7 @@ const MaterialesForm = function(props) {
     const host = process.env.HEROKU_HOSTNAME || "http://localhost:3300";
     console.log('here')
     useEffect(() => {
-        fetch(`${host}/api/obras`)
+        fetch(`/api/obras`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -24,7 +24,7 @@ const MaterialesForm = function(props) {
             .catch(error => {
                 console.error('Error fetching obras: ', error);
             })
-        fetch(`${host}/api/materiales`)
+        fetch(`/api/materiales`)
             .then(response => {
                 // console.log(response);
                 if (!response.ok) {
@@ -38,7 +38,7 @@ const MaterialesForm = function(props) {
             .catch(error => {
                 console.error('Error fetching materiales: ', error);
             })
-        fetch(`${host}/api/unidades`)
+        fetch(`/api/unidades`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

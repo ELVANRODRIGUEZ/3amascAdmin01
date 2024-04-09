@@ -27,14 +27,14 @@ const express = require("express");
 const app = express();
 
 // THIS NEEDS NPM INSTALLATION.
-const cors = require('cors');
+// const cors = require('cors');
+// 
+// const allowedOrigins = ['http://localhost:3000','http://localhost:3000/static/js/bundle.js',
+// 'http://localhost:3000/api/materiales']; // Replace with your React app's development URL
 
-const allowedOrigins = ['http://localhost:3000','http://localhost:3000/static/js/bundle.js',
-'http://localhost:3000/api/materiales']; // Replace with your React app's development URL
-
-app.use(cors({
-  origin: allowedOrigins
-}));
+// app.use(cors({
+//   origin: allowedOrigins
+// }));
 
 
 // This imports the Node.js Path module, which provides utilities for working
@@ -91,9 +91,9 @@ app.use('/api/materiales',materialesRouter);
 // In this case, it joins the current module's directory name by using
 // '__dirname', and the route 'client/public' afterwards, adding
 // '/' automatically.
+app.use(express.static('http://localhost:3000'));
 // app.use(express.static(path.join(__dirname, 'src')));
-app.use(express.static(path.join(__dirname, 'build')));
-app.use(express.static(path.join(__dirname, 'src')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // **************************************** DEFINING A ROUTE FOR THE LANDING PAGE ("index.html").
@@ -109,9 +109,9 @@ app.use(express.static(path.join(__dirname, 'src')));
 // to serve static files from that directory on a previous code line.
 // 'path.join' concatenates the parameters passed adding '/' automatically for
 // each one of them
-app.get('/', (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('*', (req, res) => {
+  // res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // **************************************** PORT LISTENING.

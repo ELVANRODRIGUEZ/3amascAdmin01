@@ -3,6 +3,7 @@
 // This loads "dotenv" package so we can use a .env file to store environmental variables.
 // --nmp install dotenv-- is needed to install this package, and we must proceed to create
 // the .env file afterwards.
+// THIS NEEDS NPM INSTALLATION.
 require("dotenv").config();
 
 // **************************************** CREATING CONSTANTS TO STORE FRAMEWORKS,
@@ -16,6 +17,7 @@ require("dotenv").config();
 // 5) RESTful API Development in general.
 // The entire Express framework is represented in the 'express' object,
 // from which we can access all its functionality.
+// THIS NEEDS NPM INSTALLATION.
 const express = require("express");
 
 // This create the URL endpoint or router object, which we will configuer to handle
@@ -38,6 +40,7 @@ const router = express.Router();
 // each request, improving performance and resource utilizacion.
 // At this point, we are importing a class (the 'Pool' class), and storing it
 // in the constant also called 'Pool'.
+// THIS NEEDS NPM INSTALLATION.
 const { Pool } = require('pg');
 
 
@@ -112,12 +115,11 @@ router.get('/', async (req, res) => {
     } catch (err) {
 
       // We log the error and send a status to the client.
-      console.error('Error fetching unidades: ', err);
+      console.error('Error fetching materiales: ', err);
       res.status(500).json({ error: 'Internal server error' });
 
     }
 })
-
 
 //  **************************************** EXPORTING THE ROUTER
 

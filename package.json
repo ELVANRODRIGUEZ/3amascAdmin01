@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^13.5.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "if-env": "^1.0.4",
     "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
@@ -17,9 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "if-env NODE_ENV=\"production\" && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start": "concurrently \"react-scripts start\" \"npm run start:server\"",
+    "start:server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -43,7 +44,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "concurrently": "^8.2.2"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
